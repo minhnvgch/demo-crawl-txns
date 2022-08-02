@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+# For using docker as crawler server
+#  crawler:
+#    build:
+#      context: ""
+#      dockerfile: ./Dockerfile
+#    working_dir: /home/node/app
+#    command: "tail -f"
+#    volumes:
+#      - ./:/home/node/app
+#    tty: true
+#    container_name: crawler
+#    depends_on:
+#      - database
+
+  database:
+    image: postgres:14-alpine
+    container_name: database
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: nft
+    volumes:
+      - database_volume:/data/postgres
+    ports:
+      - "5432:5432"
+
+volumes:
+  database_volume:

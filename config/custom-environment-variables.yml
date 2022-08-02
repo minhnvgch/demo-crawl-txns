@@ -1,0 +1,24 @@
+app:
+  name: APP_NAME
+  port: APP_PORT
+  prefix: APP_PREFIX
+
+master:
+  type: 'postgres'
+  host: POSTGRES_HOST
+  port: POSTGRES_PORT
+  username: POSTGRES_USER
+  password: POSTGRES_PASS
+  database: POSTGRES_DATABASE
+
+report:
+  type: 'postgres'
+  host: REPORT_POSTGRES_HOST
+  port: REPORT_POSTGRES_PORT
+  username: REPORT_POSTGRES_USER
+  password: REPORT_POSTGRES_PASS
+  database: REPORT_POSTGRES_DATABASE
+
+redis:
+  host: REDIS_HOST
+  port: REDIS_PORT

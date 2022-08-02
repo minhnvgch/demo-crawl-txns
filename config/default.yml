@@ -1,0 +1,25 @@
+master:
+  type: 'postgres'
+  host: 'http://127.0.0.1'
+  port: 5432
+  username: admin
+  password: 1
+  database: test
+  logging: true
+  entities:
+    - 'dist/**/*.entity{.ts,.js}'
+
+report:
+  type: 'postgres'
+  host: 'http://127.0.0.1'
+  port: 5432
+  username: admin
+  password: 1
+  database: test
+  logging: true
+  entities:
+    - 'dist/**/*.entity{.ts,.js}'
+
+redis:
+  host: 'localhost'
+  port: 6379
