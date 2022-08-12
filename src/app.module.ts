@@ -11,6 +11,7 @@ import {
   masterConfig,
   reportConfig,
 } from 'src/configs/database';
+import { BscCrawlerModule } from 'src/modules/bscCrawler/bscCrawler.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import {
     ConsoleModule,
     TestModule,
     JobModule,
+    BscCrawlerModule,
   ],
   controllers: [],
   providers: [],

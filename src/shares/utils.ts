@@ -14,3 +14,4 @@ export const getWeb3ProviderLink = async (chainId: number): Promise<string> => {
     Math.floor(currentMinutes / (60 / WEB3_API_URLS.length))
   ];
 };
+
