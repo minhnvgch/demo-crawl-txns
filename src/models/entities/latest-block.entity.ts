@@ -16,7 +16,7 @@ export class LatestBlockEntity {
 
   @Column({ name: 'key', nullable: false, unique: true })
   public key: LatestBlockKey | string;
-  ;
+
   @Column({ name: 'block', nullable: false })
   public block: number;
 

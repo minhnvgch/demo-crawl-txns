@@ -1,5 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { LatestBlockBSCEntity } from 'src/models/entities/bsc-lastest-block.entity';
+import {IBlockNumber} from "src/modules/bscCrawler/bscCrawler.interface";
 
 
 @EntityRepository(LatestBlockBSCEntity)
@@ -10,31 +11,26 @@ export class LatestBlockBSCRepository extends Repository<LatestBlockBSCEntity> {
                 blockNumber: 'DESC'
             }
         });
-        if(latestBlock == null){
-            return null;
-        }else{
-            return latestBlock.blockNumber;
-        }
+        return (latestBlock == null) ? null : latestBlock.blockNumber;
     }
 
-    async createNewLatestBlock(block): Promise<LatestBlockBSCEntity>{
+    // Todo: Change function name
+    async createNewLatestBlock(block: IBlockNumber): Promise<LatestBlockBSCEntity>{
         const existBlock = await this.findOne({
-            where:{
-                blockNumber:block.number
+            where: {
+                blockNumber: block.number
             }
         });
-        if(existBlock){
-            return null;
-        }
-        const addBlock = new LatestBlockBSCEntity();
-        addBlock.blockHash = block.hash;
-        addBlock.blockNumber = block.number;
-        addBlock.blockSize = block.size;
-        addBlock.miner = block.miner;
-        addBlock.numberOfTransactions = block.transactions.length;
-        console.log("Create new Block: ");
-        console.log(addBlock);
-        return await this.save(addBlock);
+
+        if(existBlock) return null;
+
+        const newBlock = new LatestBlockBSCEntity();
+        newBlock.blockHash = block.hash;
+        newBlock.blockNumber = block.number;
+        newBlock.blockSize = block.size;
+        newBlock.miner = block.miner;
+        newBlock.numberOfTransactions = block.transactions.length;
+        return await this.save(newBlock);
     }
 
 }
